@@ -2,11 +2,11 @@
     <header class="w-full relative shadow-xl bg-slate-800 overflow-hidden">
         <nav class="flex justify-between container mx-auto px-16">
             <div class="flex items-center gap-x-2">
-                <svg @click="changeView(0)" class="w-8 h-8 stroke-gray-100" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg @click="changeView(1)" class="w-8 h-8 stroke-gray-100" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <title>Grid view</title>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
                 </svg>
-                <svg @click="changeView(1)" class="w-8 h-8 stroke-8 stroke-gray-100" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg @click="changeView(0)" class="w-8 h-8 stroke-8 stroke-gray-100" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <title>List view</title>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
                 </svg>
@@ -63,9 +63,9 @@
 
 <script>
 export default {
-    data() {
+    data () {
         return {
-            view: 0
+            view: 1
         }
     },
 
@@ -73,6 +73,7 @@ export default {
         changeView (selected) {
             localStorage.setItem('view', selected);
             this.view = selected;
+            this.$emit('changeGrid', this.view)
         }
     },
 

@@ -19,6 +19,18 @@ module.exports = {
                 '4x' : '400%',
             },
 
+            gridRow: {
+                'span-1': 'span 1 / span 1',
+                'span-2': 'span 2 / span 2',
+                'span-3': 'span 3 / span 3',
+            },
+
+            gridColumn: {
+                'span-1': 'span 1 / span 1',
+                'span-2': 'span 2 / span 2',
+                'span-3': 'span 3 / span 3',
+            },
+
             animation: {
                 gradient: 'gradient 10s ease infinite',
             },

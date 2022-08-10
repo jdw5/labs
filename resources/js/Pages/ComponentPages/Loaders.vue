@@ -1,5 +1,5 @@
 <template>
-    <Head title="Buttons"/>
+    <Head title="Loaders"/>
     <AppLayout @changeGrid="changeView">
         <div class="gap-4 min-h-screen grid grid-cols-1 sm:grid-cols-4" :class="layout">
 

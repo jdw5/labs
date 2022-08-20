@@ -15,8 +15,12 @@ use Inertia\Inertia;
 |
 */
 
-// Route::get('/', function () {
-//     return Inertia::render('Index');
-// })->name('home');
+Route::get('/', function () {
+    return Inertia::render('Pages/Index');
+})->name('pages');
+
+Route::get('/makai', function () {
+    return Inertia::render('PageTemplates/Makai/Index');
+})->name('makai');
 
 

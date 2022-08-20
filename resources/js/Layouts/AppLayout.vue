@@ -3,21 +3,7 @@
         <div class=" bg-gradient-to-br from-gray-50 to-neutral-200 dark:from-slate-700 dark:to-slate-900">
             <header class="fixed z-50 w-full bg-transparent">
                 <nav class="container flex flex-row justify-between w-full px-4 py-4 mx-auto grow-0">	
-                    <a href="https://joshua-wallace.com" class="flex flex-row items-center justify-center px-1 gap-x-2 group">
-                        <button id="home">
-                            <svg class="w-6 h-6 stroke-textDark dark:stroke-textLight group-hover:stroke-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                            </svg>
-                        </button>
-                        <p class="font-medium cursor-pointer text-dark dark:text-light group-hover:text-primary">
-                            Home
-                        </p>
-                    </a>
-                    <h1 @click="logoClicked" class="block cursor-pointer shrink-0" role="button" tabindex=0 > 
-                        <img v-if="darkMode" @click="displayMenu = false" class="h-12" src="/images/logotight.png" alt="logo">
-                        <img v-else @click="displayMenu = false" class="h-12" src="/images/logotight_dark.png" alt="logo">
-                        <p class="tracking-widest text-center uppercase text-dark dark:text-light">Labs</p>
-                    </h1>
-                    <div class="flex flex-row gap-x-4">
+                    <div class="flex flex-row-reverse gap-x-4">
                         <button @click="toggleDarkMode" class="relative flex flex-row items-center justify-center px-1 group w-fit" title="Dark mode toggle">
                             <transition
                                 enter-active-class="transition duration-500 ease-in-out delay-500"
@@ -43,14 +29,31 @@
                             </transition>                        
                         </button>
                         <button @click="displayMenu = !displayMenu" role="menubutton" id="Menu" :title="displayMenu ? 'Close menu' : 'Open menu'" class="z-50 transition duration-300 ease-in-out group" :class="displayMenu ? 'translate-y-1' : ''">
-                            <span class="block w-8 h-1 bg-darkMenu group-hover:bg-primary dark:bg-lightMenu rounded-lg mb-1.5 transition-all duration-300 ease-in-out" :class="displayMenu ? '-rotate-45 translate-y-1' : ''" ></span>
-                            <span class="block w-8 h-1 bg-darkMenu group-hover:bg-primary dark:bg-lightMenu rounded-lg mb-1.5 transition-all duration-300 ease-in-out" :class="displayMenu ? 'rotate-45 -translate-y-1.5' : ''" ></span>
+                            <span class="block w-8 h-1 transition-all duration-300 ease-in-out rounded-lg bg-darkMenu group-hover:bg-primary dark:bg-lightMenu" :class="displayMenu ? '-rotate-45 translate-y-1' : ''" ></span>
+                            <span class="block w-8 h-1 bg-darkMenu group-hover:bg-primary dark:bg-lightMenu rounded-lg my-1.5 transition-all duration-300 ease-in-out" :class="displayMenu ? 'rotate-45 -translate-y-1.5' : ''" ></span>
                             <span class="block w-8 h-1 transition-all duration-300 ease-in-out rounded-lg bg-darkMenu group-hover:bg-primary dark:bg-lightMenu" :class="displayMenu ? 'w-0' : ''" />
                         </button>
                     </div>
+                    
+                    <h1 @click="logoClicked" class="block cursor-pointer shrink-0" role="button" tabindex=0 > 
+                        <img v-if="darkMode" @click="displayMenu = false" class="h-10 sm:h-12" src="/images/logotight.png" alt="logo">
+                        <img v-else @click="displayMenu = false" class="h-10 sm:h-12" src="/images/logotight_dark.png" alt="logo">
+                        <p class="tracking-widest text-center uppercase text-dark dark:text-light">Labs</p>
+                    </h1>
+                    <a href="https://joshua-wallace.com" class="flex flex-row-reverse items-center justify-center px-1 sm:flex-row gap-x-2 group">
+                        <button id="home">
+                            <svg class="w-6 h-6 stroke-textDark dark:stroke-textLight group-hover:stroke-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                            </svg>
+                        </button>
+                        <p class="invisible font-medium cursor-pointer sm:visible sm:block text-dark dark:text-light group-hover:text-primary">
+                            Home
+                        </p>
+                    </a>
                 </nav>
             </header>
-            <MobileMenu :modelValue="displayMenu" />
+            <MobileMenu :modelValue="displayMenu" 
+                @update:modelValue="displayMenu = false"
+            />
 
             <main class="relative w-full">
                 <div class="container min-h-screen px-4 py-16 mx-auto">

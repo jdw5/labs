@@ -1,10 +1,7 @@
 <template>
-    <Head title="Loaders"/>
-    <AppLayout @changeGrid="changeView">
-        <div class="gap-4 min-h-screen grid grid-cols-1 sm:grid-cols-4" :class="layout">
-
-        </div>
-    </AppLayout>
+    <Head title="Labs"/>
+    <div class="min-h-screen">
+    </div>
 </template>
 
 <script>
@@ -15,33 +12,22 @@ export default {
     components: {
         Head,
         Link,
-        AppLayout,
     },
+
+    layout: [AppLayout],
 
     data() {
         return {
-            view: 0
         }
     },
 
     methods: {
-        changeView (e) {
-            this.view = e
-        }
     },
 
     computed: {
-        layout () {
-            return !this.view ?
-            '' 
-            : 'grid-flow-row';
-        }
     },
 
     mounted() {
-        if (localStorage.view) {
-            this.view = localStorage.view;
-        }
     }
 
 }

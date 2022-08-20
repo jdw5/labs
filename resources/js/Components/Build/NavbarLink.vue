@@ -1,9 +1,12 @@
 <template>
     <div class="relative py-2" @mouseleave="titleHovered = false">
-		<h2 @mouseenter="titleHovered = true" class="px-24 text-3xl font-semibold text-dark dark:text-light hover:text-primary dark:hover:text-primary">
-			{{ sectionTitle }}
-		</h2>
-		<div class="absolute top-0 right-0 flex items-center w-24 h-full overflow-hidden translate-x-1/2" aria-hidden="true">
+		<Link :href="sectionHref">
+			<h2 @click="titleHovered = !titleHovered" @mouseenter="titleHovered = true" class="text-3xl font-semibold text-center text-right sm:px-24 text-dark dark:text-light hover:text-primary dark:hover:text-primary">
+				{{ sectionTitle }}
+			</h2>
+		</Link>
+
+		<div class="items-center hidden w-24 h-full overflow-hidden translate-x-1/2 sm:top-0 sm:right-0 sm:flex sm:absolute" aria-hidden="true">
 			<transition
 				enter-active-class="transition duration-500 ease-in-out delay-100"
 				enter-from-class="-translate-x-full opacity-0"
@@ -14,21 +17,23 @@
 				<span v-show="titleHovered" class="self-center block w-24 h-1 my-auto bg-dark dark:bg-light"></span>
 			</transition>
 		</div>
-		<transition
-			enter-active-class="transition duration-300 ease-in-out delay-200"
-			enter-from-class="opacity-0"
-			enter-to-class="opacity-100"
-			leave-active-class="transition duration-300 ease-in-out delay-200"
-			leave-from-class="opacity-100"
-			leave-to-class="opacity-0">
-				<ul v-show="titleHovered" class="absolute top-0 right-0 translate-x-full gap-y-2">
-					<li class="px-24" v-for="sub in subsections" :key="sub.id">
-						<h3 class="text-xl font-medium text-dark dark:text-light hover:text-primary dark:hover:text-primary whitespace-nowrap">
+		<div class="overflow-hidden">
+			<transition
+				enter-active-class="transition duration-500 ease-in-out sm:duration-300 sm:delay-200"
+				enter-from-class="-translate-y-full opacity-0 sm:translate-y-0"
+				enter-to-class="opacity-100"
+				leave-active-class="transition duration-500 ease-in-out -translate-y-full sm:duration-300 sm:delay-200 sm:translate-y-0"
+				leave-from-class="opacity-100"
+				leave-to-class="opacity-0">
+				<ul v-show="titleHovered" class="block list-disc sm:list-none sm:top-0 sm:right-0 sm:translate-x-full sm:absolute gap-y-2">
+					<li class="py-2 sm:py-0 sm:px-24" v-for="sub in subsections" :key="sub.id">
+						<Link :href="sub.href" class="text-xl font-medium text-center sm:text-left text-dark dark:text-light hover:text-primary dark:hover:text-primary whitespace-nowrap">
 							{{ sub.title }}
-						</h3>
+						</Link>
 					</li>
 				</ul>		
-		</transition>
+			</transition>
+		</div>
 	</div>
 </template>
 

@@ -6,7 +6,7 @@
         leave-active-class="duration-300 ease-in-out"
         leave-from-class="opacity-100"
         leave-to-class="opacity-0">
-        <div v-if="modelValue" class="fixed inset-0 z-30 w-full h-screen bg-black opacity-25">            
+        <div v-if="modelValue" @click="$emit('update:modelValue')" class="fixed inset-0 z-30 hidden w-full h-screen bg-black opacity-25 sm:block">            
         </div>
     </transition>
     <transition
@@ -16,8 +16,8 @@
         leave-active-class="transition duration-500 ease-in-out -translate-x-full "
         leave-from-class="opacity-100"
         leave-to-class="opacity-100">
-        <div v-if="modelValue" class="fixed z-30 w-1/2 h-screen shadow-xl bg-lightMenu dark:bg-darkMenu">
-            <div class="flex flex-col items-end justify-center w-full h-full">
+        <div v-if="modelValue" class="fixed z-30 w-full h-screen shadow-xl sm:w-1/2 bg-lightMenu dark:bg-darkMenu">
+            <div class="flex flex-col items-center w-full h-full mt-48 gap-y-2 sm:gap-y-0 sm:mt-0 sm:justify-center sm:items-end">
                 <MenuLink :sectionTitle="'Notes'"
                     :sectionHref="'/notes'"
                     :subsections="[

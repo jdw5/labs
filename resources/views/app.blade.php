@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<script>
+    let isDark = localStorage.getItem('darkMode') == 'true'
+    document.cookie = isDark
+</script>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">

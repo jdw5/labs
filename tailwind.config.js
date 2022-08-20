@@ -15,6 +15,24 @@ module.exports = {
                 cabin: ['Cabin', ...defaultTheme.fontFamily.sans],
             },
 
+            colors: {
+                primary: '#EF4444',
+                primaryHover: '#B91C1C',
+                primaryLighter: '#FCA5A5',
+                primaryDarker: '#991B1B',
+                dark: '#10101a',
+                darkMenu: '#111827',
+                light: '#F3F4F6',
+                lightHover: '#F9FAFB',
+                darkHover: '#13131d',
+                lightMenu: '#E2E8F0',
+                textDark: '#27272A',
+                textLight: '#F3F4F6',
+                textDarkHover: '#52525B',
+                textLightHover: '#D1D5DB',
+                placeholder: '#6b7280',
+            },
+
             backgroundSize: {
                 '4x' : '400%',
             },
@@ -44,6 +62,14 @@ module.exports = {
             },
         },
     },
+    darkMode: 'class',
+
+    // variants: {
+    //     colors: ['dark'],
+    //     textColor: ['dark'],
+    //     borderColor: ['dark'],
+    //     ringColor: ['dark']
+    // }, 
 
     plugins: [require('@tailwindcss/forms')],
 };

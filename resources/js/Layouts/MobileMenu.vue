@@ -1,12 +1,13 @@
 <template>
     <transition
-        enter-active-class="transition duration-500 ease-in-out"
+        enter-active-class="duration-300 ease-in-out"
         enter-from-class="opacity-0"
-        enter-to-class="scale-95 opacity-100"
-        leave-active-class="transition duration-500 ease-in-out"
-        leave-from-class="scale-95 opacity-100"
+        enter-to-class="opacity-100"
+        leave-active-class="duration-300 ease-in-out"
+        leave-from-class="opacity-100"
         leave-to-class="opacity-0">
-        <div v-if="modelValue" class="fixed w-full h-screen opacity-0"></div>
+        <div v-if="modelValue" class="fixed inset-0 z-30 w-full h-screen bg-black opacity-25">            
+        </div>
     </transition>
     <transition
         enter-active-class="transition duration-500 ease-in-out"
@@ -15,8 +16,8 @@
         leave-active-class="transition duration-500 ease-in-out -translate-x-full "
         leave-from-class="opacity-100"
         leave-to-class="opacity-100">
-        <div v-if="modelValue" class="fixed z-30 w-1/2 h-screen bg-lightMenu dark:bg-darkMenu">
-            <div class="flex flex-col items-end justify-center w-full h-full gap-y-4">
+        <div v-if="modelValue" class="fixed z-30 w-1/2 h-screen shadow-xl bg-lightMenu dark:bg-darkMenu">
+            <div class="flex flex-col items-end justify-center w-full h-full">
                 <MenuLink :sectionTitle="'Notes'"
                     :sectionHref="'/notes'"
                     :subsections="[

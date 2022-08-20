@@ -20,7 +20,7 @@ Route::get('/', function () {
 })->name('pages');
 
 Route::get('/makai', function () {
-    return Inertia::render('PageTemplates/Makai/Index');
+    return Inertia::render('Pages/Makai');
 })->name('makai');
 
 

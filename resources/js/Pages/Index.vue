@@ -1,6 +1,6 @@
 <template>
     <Head title="Labs"/>
-    <div class="min-h-screen bg-red-500 dark:bg-black">
+    <div class="min-h-screen">
     </div>
 </template>
 

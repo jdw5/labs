@@ -1,6 +1,6 @@
 <template>
     <div class="font-cabin bg-gradient-to-br from-slate-700 to-slate-900 " :class="darkMode ? 'dark' : ''">
-        <header class="sticky top-0 z-40 w-full bg-transparent">
+        <header class="fixed z-50 w-full bg-transparent">
             <nav class="container flex flex-row justify-between w-full px-4 py-4 mx-auto grow-0">	
                 <a href="https://joshua-wallace.com" class="flex flex-row items-center justify-center px-1 gap-x-2 group">
                     <button id="home">
@@ -21,10 +21,10 @@
                         <transition
                             enter-active-class="transition duration-500 ease-in-out delay-500"
                             enter-from-class="transform rotate-90 -translate-x-full opacity-0"
-                            enter-to-class="transform opacity-100"
+                            enter-to-class="opacity-100"
                             leave-active-class="transition ease-in-out duration-500 translate-x-[200%] rotate-90"
-                            leave-from-class="transform translate-x-full opacity-100"
-                            leave-to-class="transform opacity-0">
+                            leave-from-class="translate-x-full opacity-100"
+                            leave-to-class="opacity-0">
                                 <svg v-show="!darkMode" id="sun" class="w-6 h-6 stroke-textDark dark:stroke-textLight group-hover:stroke-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                                 </svg>
@@ -41,14 +41,16 @@
                                 </svg>
                         </transition>                        
                     </button>
-                    <button @click="displayMenu = !displayMenu" role="menubutton" id="Menu" :title="displayMenu ? 'Close menu' : 'Open menu'" class="z-50 transition-all duration-300 ease-in-out group">
-                        <span class="block w-8 h-1 bg-darkMenu group-hover:bg-primary dark:bg-lightMenu rounded-lg mb-1.5 transition-all duration-300 ease-in-out"></span>
-                        <span class="block w-8 h-1 bg-darkMenu group-hover:bg-primary dark:bg-lightMenu rounded-lg mb-1.5 transition-all duration-300 ease-in-out" ></span>
-                        <span class="block w-8 h-1 transition-all duration-300 ease-in-out rounded-lg bg-darkMenu group-hover:bg-primary dark:bg-lightMenu"></span>
+                    <button @click="displayMenu = !displayMenu" role="menubutton" id="Menu" :title="displayMenu ? 'Close menu' : 'Open menu'" class="z-50 transition duration-300 ease-in-out group" :class="displayMenu ? 'translate-y-1' : ''">
+                        <span class="block w-8 h-1 bg-darkMenu group-hover:bg-primary dark:bg-lightMenu rounded-lg mb-1.5 transition-all duration-300 ease-in-out" :class="displayMenu ? '-rotate-45 translate-y-1' : ''" ></span>
+                        <span class="block w-8 h-1 bg-darkMenu group-hover:bg-primary dark:bg-lightMenu rounded-lg mb-1.5 transition-all duration-300 ease-in-out" :class="displayMenu ? 'rotate-45 -translate-y-1.5' : ''" ></span>
+                        <span class="block w-8 h-1 transition-all duration-300 ease-in-out rounded-lg bg-darkMenu group-hover:bg-primary dark:bg-lightMenu" :class="displayMenu ? 'w-0' : ''" />
                     </button>
                 </div>
             </nav>
         </header>
+        <MobileMenu :modelValue="displayMenu" />
+
         <main class="relative w-full">
             <div class="container min-h-screen px-4 py-16 mx-auto">
                 <slot />
@@ -61,12 +63,14 @@
 
 import { Inertia, Link } from '@inertiajs/inertia-vue3'
 import NavbarLink from '@/Components/Build/NavbarLink.vue'
+import MobileMenu from '@/Layouts/MobileMenu.vue'
 
 
 export default {
     components: {
         Link,
 		NavbarLink,
+        MobileMenu,
     },
 	
 	data() {
@@ -104,11 +108,7 @@ export default {
 			if (urlMod === currentUrl) {
 				window.scrollTo({ top: 0, behavior: 'smooth' });
 			} else {
-				this.logoChange = true
-				setTimeout(() => { 
-					this.$inertia.visit('/')
-					this.logoChange = false;     
-				}, 1200);
+				this.$inertia.visit('/')
 			}
 		}
 	},

@@ -1,11 +1,35 @@
 <template>
-    <Link class="relative flex flex-row items-center justify-center w-64 overflow-hidden group sm:w-96" :href="`/${href}`">
-		<div class="absolute top-0 left-0 w-full transition duration-300 ease-in-out -translate-x-full rounded-t bg-lightHover dark:bg-darkHover h-2/3 group-hover:-translate-x-0" aria-hidden="true"/>
-        <div class="absolute bottom-0 right-0 w-full transition duration-300 ease-in-out translate-x-full rounded-b bg-lightHover dark:bg-darkHover h-2/3 group-hover:translate-x-0" aria-hidden="true"/>
-        <p class="relative py-2 text-3xl font-semibold transition duration-300 ease-in-out z-1 sm:py-4" :class="onPage ? 'text-primary' : 'text-textDark dark:text-textLight group-hover:text-textDarkHover dark:group-hover:text-textLightHover'">
-            {{ title }}
-        </p>
-    </Link>
+    <div class="relative" @mouseleave="titleHovered = false">
+		<h2 @mouseenter="titleHovered = true" class="px-24 text-3xl font-semibold text-dark dark:text-light hover:text-primary">
+			{{ sectionTitle }}
+		</h2>
+		<div class="absolute top-0 right-0 flex items-center w-24 h-full overflow-hidden translate-x-1/2">
+			<transition
+				enter-active-class="transition duration-500 ease-in-out delay-100"
+				enter-from-class="-translate-x-full opacity-0"
+				enter-to-class="opacity-100"
+				leave-active-class="transition duration-500 ease-in-out -translate-x-full"
+				leave-from-class="opacity-100"
+				leave-to-class="opacity-0">
+				<span v-if="titleHovered" class="self-center block w-24 h-1 my-auto bg-dark dark:bg-light"></span>
+			</transition>
+		</div>
+		<transition
+			enter-active-class="transition duration-500 ease-in-out delay-200"
+			enter-from-class="opacity-0"
+			enter-to-class="opacity-100"
+			leave-active-class="transition duration-500 ease-in-out delay-200"
+			leave-from-class="opacity-100"
+			leave-to-class="opacity-0">
+				<ul v-if="titleHovered" class="absolute top-0 right-0 translate-x-full gap-y-2">
+					<li class="px-24" v-for="sub in subsections" :key="sub.id">
+						<h3 class="text-xl font-medium text-dark dark:text-light hover:text-primary whitespace-nowrap">
+							{{ sub.title }}
+						</h3>
+					</li>
+				</ul>		
+		</transition>
+	</div>
 </template>
 
 <script>
@@ -15,13 +39,16 @@ export default {
 		Link,
 	},
 
+	data() {
+		return {
+			titleHovered: false,
+		}
+	},
+
 	props: {
-		title: String,
-		href: String,
-		scrolled: Number,
-		position: Number,
-        delay: String,
-		onPage: Boolean,
+		sectionTitle: String,
+		sectionHref: String,
+		subsections: Array,
 	},
 
 	methods: {

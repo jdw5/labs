@@ -132,7 +132,6 @@ export default {
 
 	mounted() {
 		// this.darkMode = (localStorage.getItem("darkMode") === 'true')
-        console.log(this.darkMode)
 	}
 }
 </script>

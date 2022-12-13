@@ -42,25 +42,25 @@ export default {
     computed: {
         tabClass() {
             if (this.topic === 1) {
-                return "px-4 py-2 mt-2 rounded-t font-regular text-white bg-primary text-center transition-all duration-300 ease-in-out"
+                return "px-4 py-2 mt-2 rounded-t font-regular text-white bg-primary text-center"
             } else {
-                return "px-2 py-2 mt-3 float-right rounded-t font-regular hover:bg-ditaSecondaryHover font-regular cursor-pointer truncate overflow-hidden whitespace-nowrap w-16 transition-all duration-300 ease-in-out"
+                return "px-2 py-2 mt-3 float-right rounded-t font-regular hover:text-primaryHover font-regular cursor-pointer text-clip overflow-hidden whitespace-nowrap bg-primary/20"
 
             }
         },
         tabClassAll() {
             if (this.topic === 2) {
-                return "px-4 py-2 mt-2 rounded-t font-regular text-white bg-primary text-center transition-all duration-300 ease-in-out"
+                return "px-4 py-2 mt-2 rounded-t font-regular text-white bg-primary text-center"
             } else {
-                return "px-2 py-2 mt-3 float-right rounded-t font-regular hover:bg-ditaSecondaryHover font-regular cursor-pointer truncate overflow-hidden whitespace-nowrap w-16 transition-all duration-300 ease-in-out"
+                return "-ml-2 px-2 py-2 mt-3 float-right rounded-t font-regular hover:text-primaryHover font-regular cursor-pointer text-clip overflow-hidden whitespace-nowrap bg-primary/20"
             }
 
         },
         tabClassWatch() {
             if (this.topic === 3) {
-                return "px-4 py-2 mt-2 rounded-t font-regular text-white bg-primary text-center transition-all duration-300 ease-in-out"
+                return "px-4 py-2 mt-2 rounded-t font-regular text-white bg-primary text-center"
             } else {
-                return "px-2 py-2 mt-3 float-right rounded-t font-regular hover:bg-ditaSecondaryHover font-regular cursor-pointer truncate overflow-hidden whitespace-nowrap w-16 transition-all duration-300 ease-in-out"
+                return "px-2 py-2 mt-3 float-right rounded-t font-regular hover:text-primaryHover font-regular cursor-pointer text-clip overflow-hidden whitespace-nowrap bg-primary/20"
 
             }
 

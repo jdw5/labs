@@ -2,6 +2,7 @@
     <Head title="Labs"/>
     <div class="min-h-screen">
         <TabIdea />
+        <TabIdea2 />
     </div>
 </template>
 
@@ -9,6 +10,7 @@
 import { Head, Link } from '@inertiajs/inertia-vue3'
 import AppLayout from '@/Layouts/AppLayout.vue'
 import TabIdea from '@/Components/Display/TabIdea.vue'
+import TabIdea2 from '@/Components/Display/TabIdea2.vue'
 
 
 export default {
@@ -16,6 +18,7 @@ export default {
         Head,
         Link,
         TabIdea,
+        TabIdea2,
     },
 
     layout: [AppLayout],
